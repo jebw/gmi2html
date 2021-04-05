@@ -1,0 +1,14 @@
+# Gmi2html
+
+This is a pure ruby Gemtext to HTML convertor.
+
+## Gemini
+
+Gemtext is a simple plain text format, similar to Markdown but simpler. It is the official format for pages within Gemini capsules.
+
+For more information on Gemini see the official page
+
+=> //gemini.circumlunar.space Gemini official page
+=> //gemini.circumlunar.space/docs/specification.gmi Gemini specification
+
+
