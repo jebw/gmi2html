@@ -4,6 +4,12 @@ require 'spec_helper'
 
 RSpec.describe Gmi2html::Document do
   describe '#new' do
+    context 'with open file' do
+      subject { described_class.new StringIO.new("# Title\n\nBody content") }
+
+      it { is_expected.to be_instance_of described_class }
+    end
+
     context 'with gemini content' do
       subject { described_class.new "# Title\n\nBody content" }
 
@@ -47,7 +53,7 @@ RSpec.describe Gmi2html::Document do
       context "with #{File.basename gemini_file}" do
         let(:gemini_file) { gemini_file }
 
-        it { is_expected.to eql html_file }
+        it { is_expected.to eql File.read(html_file) }
       end
     end
   end
