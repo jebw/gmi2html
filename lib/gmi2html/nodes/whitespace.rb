@@ -4,7 +4,7 @@ module Gmi2html
   module Nodes
     class Whitespace < Gmi2html::Node
       def to_s
-        '<br />'
+        '<br />\n'
       end
     end
   end

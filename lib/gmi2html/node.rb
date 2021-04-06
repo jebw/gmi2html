@@ -7,7 +7,7 @@ module Gmi2html
     end
 
     def to_s
-      "<#{tag}>#{escaped_content}</#{tag}>"
+      "<#{tag}>#{escaped_content}</#{tag}>\n"
     end
 
     private
