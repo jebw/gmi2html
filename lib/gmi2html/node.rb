@@ -2,8 +2,8 @@
 
 module Gmi2html
   class Node
-    def initialize(content)
-      @content = content
+    def initialize(gemtext_node)
+      @gemtext_node = gemtext_node
     end
 
     def to_s
@@ -12,8 +12,12 @@ module Gmi2html
 
     private
 
+    def content
+      @gemtext_node.content
+    end
+
     def escaped_content
-      @content # FIXME: actually escape content
+      content # FIXME: actually escape content
     end
   end
 end
