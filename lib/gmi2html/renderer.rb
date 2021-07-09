@@ -2,8 +2,8 @@
 
 module Gmi2html
   class Renderer
-    def initialize(gemtext_document)
-      @gemtext_document = gemtext_document
+    def initialize(nodes)
+      @nodes = nodes
     end
 
     def to_html
@@ -12,13 +12,9 @@ module Gmi2html
 
     private
 
-    def gemtext_nodes
-      @gemtext_document.nodes
-    end
-
     def html_nodes
-      gemtext_nodes.map.with_index do |node, index|
-        next if first_whitespace_node? index
+      @nodes.map.with_index do |node, index|
+        # next if first_whitespace_node? index
 
         klass = html_node_for_gemtext_node(node)
         klass.new node.content
@@ -30,12 +26,14 @@ module Gmi2html
       Nodes.const_get node_name
     end
 
-    def first_whitespace_node?(index)
-      index >= 0 && whitespace_node?(index) && !whitespace_node?(index - 1)
-    end
+    # This belongs in the node renderer - will need to know about earlier nodes somehow
+    # def first_whitespace_node?(index)
+    #   index >= 0 && whitespace_node?(index) && !whitespace_node?(index - 1)
+    # end
 
-    def whitespace_node?(index)
-      gemtext_nodes[index].is_a? Gemtext::Whitespace
-    end
+    # This belongs in the node renderer
+    # def whitespace_node?(index)
+    #   gemtext_nodes[index].is_a? Gemtext::Whitespace
+    # end
   end
 end

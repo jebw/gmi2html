@@ -12,11 +12,9 @@ module Gmi2html
       end
     end
 
-    def initialize(document_io)
-      document_io = StringIO.new(document_io) if document_io.is_a?(String)
-
-      @document_io = document_io
-      @document = document
+    def initialize(doc)
+      @document_io = wrap_document(doc)
+      @gemtext = gemtext
     end
 
     def to_html
@@ -25,16 +23,16 @@ module Gmi2html
 
     private
 
-    def parser
-      ::Gemtext::Parser.new @document_io
+    def wrap_document(doc)
+      doc.is_a?(String) ? StringIO.new(doc) : doc
     end
 
-    def document
-      parser.parse
+    def gemtext
+      ::Gemtext::Parser.new(@document_io).parse
     end
 
     def renderer
-      Renderer.new @document
+      Renderer.new @gemtext.nodes
     end
   end
 end
