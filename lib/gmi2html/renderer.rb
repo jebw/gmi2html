@@ -16,16 +16,8 @@ module Gmi2html
       @gemtext_nodes.map.with_index do |node, index|
         next if first_whitespace_node? index
 
-        html_node_for_gemtext_node(node)
+        Node.for_gemtext node
       end
-    end
-
-    def html_node_for_gemtext_node(node)
-      klass_for_gemtext_node(node).new node
-    end
-
-    def klass_for_gemtext_node(node)
-      Nodes.const_get node.class.to_s.gsub(/\AGemtext::/, '')
     end
 
     def first_whitespace_node?(index)
