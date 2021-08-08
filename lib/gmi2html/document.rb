@@ -4,14 +4,6 @@ require 'gemtext'
 
 module Gmi2html
   class Document
-    class << self
-      def from_file(filename)
-        File.open(filename) do |file|
-          new file
-        end
-      end
-    end
-
     def initialize(doc)
       @document_io = wrap_document(doc)
       @gemtext = parse_gemtext

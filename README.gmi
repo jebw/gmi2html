@@ -1,6 +1,6 @@
 # Gmi2html
 
-This is a pure ruby Gemtext to HTML convertor.
+This is a pure ruby Gemtext to HTML convertor, relying on the gemtext gem
 
 ## Gemini
 
@@ -10,5 +10,43 @@ For more information on Gemini see the official page
 
 => //gemini.circumlunar.space Gemini official page
 => //gemini.circumlunar.space/docs/specification.gmi Gemini specification
+
+## Using Gmi2html
+
+To convert a Gemtext string to an html string
+
+```
+require 'gmi2html'
+
+html_string = Gmi2html::Document.new(my_gemtext_string).to_html
+```
+
+To convert a Gemtext file to an html string
+
+```
+require 'gmi2html'
+
+html_string = File.open('capsule/my_gemtext.gmi', 'r') do |f|
+  Gmi2html::Document.new(f).to_html
+end
+```
+
+## Status
+
+Partially complete: this gem works well for the gemtext node types support but it doesn't support all types yet.
+
+### Supported
+
+* Paragraphs
+* Headings
+* Quotes
+* Whitespace
+
+### Still to be done
+
+* List items
+* Preformatted text
+* Syntax highlighted preformatted text
+
 
 
