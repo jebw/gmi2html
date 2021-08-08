@@ -14,7 +14,7 @@ module Gmi2html
 
     def initialize(doc)
       @document_io = wrap_document(doc)
-      @gemtext = gemtext
+      @gemtext = parse_gemtext
     end
 
     def to_html
@@ -27,7 +27,7 @@ module Gmi2html
       doc.is_a?(String) ? StringIO.new(doc) : doc
     end
 
-    def gemtext
+    def parse_gemtext
       ::Gemtext::Parser.new(@document_io).parse
     end
 

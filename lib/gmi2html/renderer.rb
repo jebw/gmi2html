@@ -17,7 +17,7 @@ module Gmi2html
     def rendered_nodes
       nodes.map.with_index do |node, index|
         prev_node = index >= 0 ? nodes[index - 1] : nil
-        next_node = nodes[index]
+        next_node = nodes[index + 1]
 
         node_renderer = NodeRenderers::Base.for_gemtext(node)
         node_renderer.render(prev_node, next_node)
