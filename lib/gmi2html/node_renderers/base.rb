@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'cgi'
+
 module Gmi2html
   module NodeRenderers
     class NotGemtextNode < RuntimeError
@@ -41,7 +43,7 @@ module Gmi2html
       end
 
       def escaped_content
-        content # FIXME: actually escape content
+        CGI.escapeHTML(content)
       end
     end
   end

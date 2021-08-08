@@ -15,15 +15,15 @@ RSpec.describe Gmi2html::NodeRenderers::Base do
   end
 
   describe '.for_gemtext' do
-    let(:gemtext) { Gemtext::Text.new 'Gemtext test' }
-    let(:instance) { described_class.for_gemtext gemtext }
+    let(:node) { Gemtext::Text.new content }
+    let(:instance) { described_class.for_gemtext node }
 
     it 'will return a Gmi2html::NodeRenderers::Text' do
       expect(instance).to be_kind_of Gmi2html::NodeRenderers::Text
     end
 
     it 'will assign the content' do
-      expect(instance.content).to eq gemtext.content
+      expect(instance.content).to eq node.content
     end
   end
 
@@ -40,7 +40,21 @@ RSpec.describe Gmi2html::NodeRenderers::Base do
       expect(instance.render).to match %r{</test>\n\z}
     end
 
-    it 'will escape the content'
+    context 'with html tags in' do
+      let(:content) { '<p>Hello</p>' }
+
+      it 'will escape the content' do
+        expect(instance.render).to eql "<test>&lt;p&gt;Hello&lt;/p&gt;</test>\n"
+      end
+    end
+
+    context 'with html special chars' do
+      let(:content) { 'Hello & world' }
+
+      it 'will escape the content' do
+        expect(instance.render).to eql "<test>Hello &amp; world</test>\n"
+      end
+    end
   end
 
   describe '#to_s' do
