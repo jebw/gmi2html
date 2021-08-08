@@ -28,7 +28,7 @@ module Gmi2html
         @node = node
       end
 
-      def render
+      def render(_prev_node = nil, _next_node = nil)
         "<#{tag}>#{escaped_content}</#{tag}>\n"
       end
 

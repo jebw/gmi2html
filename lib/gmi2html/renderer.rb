@@ -2,8 +2,10 @@
 
 module Gmi2html
   class Renderer
+    attr_reader :nodes
+
     def initialize(nodes)
-      @gemtext_nodes = nodes
+      @nodes = nodes
     end
 
     def to_html
@@ -13,19 +15,13 @@ module Gmi2html
     private
 
     def rendered_nodes
-      @gemtext_nodes.map.with_index do |node, index|
-        next if first_whitespace_node? index
+      nodes.map.with_index do |node, index|
+        prev_node = index >= 0 ? nodes[index - 1] : nil
+        next_node = nodes[index]
 
-        NodeRenderers::Base.for_gemtext(node).render
+        node_renderer = NodeRenderers::Base.for_gemtext(node)
+        node_renderer.render(prev_node, next_node)
       end
-    end
-
-    def first_whitespace_node?(index)
-      index >= 0 && whitespace_node?(index) && !whitespace_node?(index - 1)
-    end
-
-    def whitespace_node?(index)
-      @gemtext_nodes[index].is_a? Gemtext::Whitespace
     end
   end
 end
