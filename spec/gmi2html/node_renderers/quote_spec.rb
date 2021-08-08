@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Gmi2html::NodeRenderers::Quote do
-  let(:instance) { described_class.new 'Quote' }
+  let(:instance) { described_class.new Gemtext::Quote.new('Quote') }
 
   describe '#to_s' do
     subject { instance.to_s }

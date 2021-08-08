@@ -1,42 +1,44 @@
 # frozen_string_literal: true
 
-module Gmi2html::NodeRenderers
-  class NotGemtextNode < RuntimeError
-    def initialize
-      super 'Supplied object does not inherit from Gemtext::Node'
-    end
-  end
-
-  class Base
-    attr_reader :content
-
-    class << self
-      def for_gemtext(gemtext_node)
-        klass_for_gemtext_node(gemtext_node).new gemtext_node.content
-      end
-
-      private
-
-      def klass_for_gemtext_node(node)
-        raise NotGemtextNode unless node.is_a? Gemtext::Node
-
-        node_type = node.class.to_s.split('::').last
-        Gmi2html::NodeRenderers.const_get node_type
+module Gmi2html
+  module NodeRenderers
+    class NotGemtextNode < RuntimeError
+      def initialize
+        super 'Supplied object does not inherit from Gemtext::Node'
       end
     end
 
-    def initialize(content)
-      @content = content
-    end
+    class Base
+      class << self
+        def for_gemtext(gemtext_node)
+          klass_for_gemtext_node(gemtext_node).new gemtext_node
+        end
 
-    def to_s
-      "<#{tag}>#{escaped_content}</#{tag}>\n"
-    end
+        private
 
-    private
+        def klass_for_gemtext_node(node)
+          raise NotGemtextNode unless node.is_a? Gemtext::Node
 
-    def escaped_content
-      content # FIXME: actually escape content
+          node_type = node.class.to_s.split('::').last
+          Gmi2html::NodeRenderers.const_get node_type
+        end
+      end
+
+      def initialize(node)
+        @node = node
+      end
+
+      def to_s
+        "<#{tag}>#{escaped_content}</#{tag}>\n"
+      end
+
+      def content
+        @node.content
+      end
+
+      def escaped_content
+        content # FIXME: actually escape content
+      end
     end
   end
 end
