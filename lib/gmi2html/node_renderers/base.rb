@@ -28,8 +28,12 @@ module Gmi2html
         @node = node
       end
 
-      def to_s
+      def render
         "<#{tag}>#{escaped_content}</#{tag}>\n"
+      end
+
+      def to_s
+        render
       end
 
       def content

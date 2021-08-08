@@ -3,5 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe Gmi2html::Renderer do
-  it 'should be tested'
+  describe 'to_html' do
+    it 'should combine the nodes'
+  end
 end

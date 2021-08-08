@@ -5,8 +5,8 @@ require 'spec_helper'
 RSpec.describe Gmi2html::NodeRenderers::Whitespace do
   let(:instance) { described_class.new Gemtext::Whitespace.new }
 
-  describe '#to_s' do
-    subject { instance.to_s }
+  describe '#render' do
+    subject { instance.render }
 
     it { is_expected.to eq "<br />\n" }
   end

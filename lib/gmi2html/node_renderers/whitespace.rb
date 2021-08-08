@@ -3,7 +3,7 @@
 module Gmi2html
   module NodeRenderers
     class Whitespace < Base
-      def to_s
+      def render
         "<br />\n"
       end
     end

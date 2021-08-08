@@ -7,16 +7,16 @@ module Gmi2html
     end
 
     def to_html
-      html_nodes.compact.join
+      rendered_nodes.compact.join
     end
 
     private
 
-    def html_nodes
+    def rendered_nodes
       @gemtext_nodes.map.with_index do |node, index|
         next if first_whitespace_node? index
 
-        NodeRenderers::Base.for_gemtext node
+        NodeRenderers::Base.for_gemtext(node).render
       end
     end
 

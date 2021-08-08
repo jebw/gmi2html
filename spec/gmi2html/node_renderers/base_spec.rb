@@ -3,6 +3,9 @@
 require 'spec_helper'
 
 RSpec.describe Gmi2html::NodeRenderers::Base do
+  let(:content) { 'Hello, world!' }
+  let(:instance) { test_node_renderer.new Gemtext::Node.new(content) }
+
   let :test_node_renderer do
     Class.new(described_class) do
       def tag
@@ -24,22 +27,25 @@ RSpec.describe Gmi2html::NodeRenderers::Base do
     end
   end
 
-  describe '#to_s' do
-    let(:content) { 'Hello, world!' }
-    let(:instance) { test_node_renderer.new Gemtext::Node.new(content) }
-
+  describe '#render' do
     it 'will generate a <test> html element' do
-      expect(instance.to_s).to match %r{\A<test>[^<]+</test>}
+      expect(instance.render).to match %r{\A<test>[^<]+</test>}
     end
 
     it 'will include the content' do
-      expect(instance.to_s).to match %r{>Hello, world!<}
+      expect(instance.render).to match %r{>Hello, world!<}
     end
 
     it 'will end with a newline' do
-      expect(instance.to_s).to match %r{</test>\n\z}
+      expect(instance.render).to match %r{</test>\n\z}
     end
 
     it 'will escape the content'
+  end
+
+  describe '#to_s' do
+    it 'will generate a <test> html element' do
+      expect(instance.render).to match %r{\A<test>[^<]+</test>}
+    end
   end
 end
