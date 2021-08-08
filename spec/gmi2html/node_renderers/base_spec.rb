@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Gmi2html::Node do
+RSpec.describe Gmi2html::NodeRenderers::Base do
   let :test_node do
     Class.new(described_class) do
       def tag
@@ -15,8 +15,8 @@ RSpec.describe Gmi2html::Node do
     let(:gemtext) { Gemtext::Text.new 'Gemtext test' }
     let(:instance) { described_class.for_gemtext gemtext }
 
-    it 'will return a Gmi2html::Nodes::Text' do
-      expect(instance).to be_kind_of Gmi2html::Nodes::Text
+    it 'will return a Gmi2html::NodeRenderers::Text' do
+      expect(instance).to be_kind_of Gmi2html::NodeRenderers::Text
     end
 
     it 'will assign the content' do

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-module Gmi2html
+module Gmi2html::NodeRenderers
   class NotGemtextNode < RuntimeError
     def initialize
       super 'Supplied object does not inherit from Gemtext::Node'
     end
   end
 
-  class Node
+  class Base
     attr_reader :content
 
     class << self
@@ -20,7 +20,8 @@ module Gmi2html
       def klass_for_gemtext_node(node)
         raise NotGemtextNode unless node.is_a? Gemtext::Node
 
-        Nodes.const_get node.class.to_s.split('::').last
+        node_type = node.class.to_s.split('::').last
+        Gmi2html::NodeRenderers.const_get node_type
       end
     end
 

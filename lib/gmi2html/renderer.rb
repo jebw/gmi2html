@@ -16,7 +16,7 @@ module Gmi2html
       @gemtext_nodes.map.with_index do |node, index|
         next if first_whitespace_node? index
 
-        Node.for_gemtext node
+        NodeRenderers::Base.for_gemtext node
       end
     end
 

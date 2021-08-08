@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Gmi2html::Nodes::Quote do
+RSpec.describe Gmi2html::NodeRenderers::Quote do
   let(:instance) { described_class.new 'Quote' }
 
   describe '#to_s' do

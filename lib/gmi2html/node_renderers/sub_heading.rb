@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Gmi2html
-  module Nodes
-    class Text < Gmi2html::Node
+  module NodeRenderers
+    class SubHeading < Base
       def tag
-        'p'
+        'h2'
       end
     end
   end

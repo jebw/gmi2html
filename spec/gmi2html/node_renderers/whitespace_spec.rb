@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Gmi2html::Nodes::Whitespace do
+RSpec.describe Gmi2html::NodeRenderers::Whitespace do
   let(:instance) { described_class.new 'ignore' }
 
   describe '#to_s' do

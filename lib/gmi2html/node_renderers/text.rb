@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Gmi2html
-  module Nodes
-    class Quote < Gmi2html::Node
+  module NodeRenderers
+    class Text < Base
       def tag
-        'blockquote'
+        'p'
       end
     end
   end

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Gmi2html::Nodes::SubHeading do
+RSpec.describe Gmi2html::NodeRenderers::SubHeading do
   let(:instance) { described_class.new 'Heading 2' }
 
   describe '#to_s' do
