@@ -26,13 +26,3 @@ RSpec.configure do |config|
 
   config.raise_errors_for_deprecations!
 end
-
-def fixture_file(fixture_name)
-  fixture_name = "#{fixture_name}.gmi" unless fixture_name.include? '.'
-
-  File.expand_path("fixtures/#{fixture_name}", __dir__)
-end
-
-def all_gmi_fixtures
-  Dir[File.expand_path('fixtures/*.gmi', __dir__)]
-end

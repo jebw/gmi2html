@@ -26,15 +26,16 @@ RSpec.describe Gmi2html::Document do
   describe '#to_html' do
     subject { instance.to_html }
 
-    let(:instance) { described_class.new File.read(gemini_file) }
-    let(:html_file) { gemini_file.gsub(/\.gmi\z/, '.html') }
+    let(:instance) { described_class.new File.read(gemtext_file) }
 
-    all_gmi_fixtures.each do |gemini_file|
-      context "with #{File.basename gemini_file}" do
-        let(:gemini_file) { gemini_file }
+    shared_examples 'a converted gemtext file' do |filename|
+      let(:gemtext_file) { "spec/fixtures/#{filename}.gmi" }
+      let(:expected_html_output) { File.read "spec/fixtures/#{filename}.html" }
 
-        it { is_expected.to eql File.read(html_file) }
-      end
+      it { is_expected.to eql expected_html_output }
     end
+
+    it_behaves_like 'a converted gemtext file', 'simple'
+    it_behaves_like 'a converted gemtext file', 'complex'
   end
 end
