@@ -7,7 +7,7 @@ require 'gmi2html/version'
 Gem::Specification.new do |gem|
   gem.name        = 'gmi2html'
   gem.version     = Gmi2html::VERSION
-  gem.summary     = 'Simple Gemini to HTML convertor'
+  gem.summary     = 'Gemini to HTML convertor'
   gem.description = <<~DESCRIPTION
     Simple pure ruby Gemini to HTML convertor
   DESCRIPTION
@@ -22,15 +22,15 @@ Gem::Specification.new do |gem|
   gem.require_paths = %w[lib]
   gem.required_ruby_version = '>= 2.5.0'
 
-  gem.add_dependency 'gemtext'
+  gem.add_dependency 'gemtext', '~> 1.0'
 
-  gem.add_development_dependency 'bundler'
-  gem.add_development_dependency 'byebug'
-  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'bundler', '~> 2.2'
+  gem.add_development_dependency 'byebug', '~> 11.1'
+  gem.add_development_dependency 'rake', '~> 13.0'
   gem.add_development_dependency 'rspec', '~> 3.10'
-  gem.add_development_dependency 'rubocop'
-  gem.add_development_dependency 'rubocop-rake'
-  gem.add_development_dependency 'rubocop-rspec', '~> 2.2.0'
-  gem.add_development_dependency 'simplecov', '>= 0.21.2'
-  gem.add_development_dependency 'yard'
+  gem.add_development_dependency 'rubocop', '~> 1.23'
+  gem.add_development_dependency 'rubocop-rake', '~> 0.6'
+  gem.add_development_dependency 'rubocop-rspec', '~> 2.6'
+  gem.add_development_dependency 'simplecov', '~> 0.21'
+  gem.add_development_dependency 'yard', '~> 0.9.26'
 end

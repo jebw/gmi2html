@@ -33,7 +33,7 @@ end
 
 ## Status
 
-Partially complete: this gem works well for the gemtext node types support but it doesn't support all types yet.
+First release but should be feature complete
 
 ### Supported
 
@@ -41,12 +41,6 @@ Partially complete: this gem works well for the gemtext node types support but i
 * Headings
 * Quotes
 * Whitespace
-
-### Still to be done
-
 * List items
 * Preformatted text
 * Syntax highlighted preformatted text
-
-
-
