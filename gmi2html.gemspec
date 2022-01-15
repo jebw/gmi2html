@@ -24,6 +24,15 @@ Gem::Specification.new do |gem|
   gem.require_paths = %w[lib]
   gem.required_ruby_version = '>= 2.5.0'
 
+  gem.metadata = {
+    'homepage_uri' => 'https://github.com/jebw/gmi2html/',
+    'changelog_uri' => 'https://github.com/jebw/gmi2html/blob/main/CHANGELOG.md',
+    'source_code_uri' => 'https://github.com/jebw/gmi2html/',
+    'documentation_uri' => "https://github.com/jebw/gmi2html/blob/main/README.md",
+    'bug_tracker_uri' => 'https://github.com/jebw/gmi2html/issues',
+    'rubygems_mfa_required' => 'true'
+  }
+
   gem.add_dependency 'gemtext', '~> 1.0'
 
   gem.add_development_dependency 'bundler', '~> 2.2'
