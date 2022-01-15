@@ -1,6 +1,7 @@
 *.gem
 *.rbc
 .bundle
+.byebug_history
 .config
 .coverage
 .ruby-version

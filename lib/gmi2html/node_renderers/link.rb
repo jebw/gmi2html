@@ -23,9 +23,9 @@ module Gmi2html
         %(<#{tag} href="#{escaped_link}">#{escaped_description}</#{tag}>\n)
       end
 
-      def render(_prev_node = nil, _next_node = nil)
-        prefix = "<#{wrapping_tag}>\n"
-        suffix = "</#{wrapping_tag}>\n"
+      def render(prev_node = nil, next_node = nil)
+        prefix = prev_node.is_a?(Gemtext::Link) ? '' : "<#{wrapping_tag}>\n"
+        suffix = next_node.is_a?(Gemtext::Link) ? '' : "</#{wrapping_tag}>\n"
 
         "#{prefix}#{rendered_link_tag}#{suffix}"
       end
