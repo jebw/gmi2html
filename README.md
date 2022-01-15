@@ -8,14 +8,16 @@ Gemtext is a simple plain text format, similar to Markdown but simpler. It is th
 
 For more information on Gemini see the official page
 
-=> //gemini.circumlunar.space Gemini official page
-=> //gemini.circumlunar.space/docs/specification.gmi Gemini specification
+[Gemini official page](//gemini.circumlunar.space)
+[Gemini specification](//gemini.circumlunar.space/docs/specification.gmi)
+
+I've written a separate gem - [jekyll-gemini](https://github.com/jebw/jekyll-gemini) which uses this gem for publishing from your Jekyll blog to a Gemini capsule. 
 
 ## Using Gmi2html
 
 To convert a Gemtext string to an html string
 
-```
+```ruby
 require 'gmi2html'
 
 html_string = Gmi2html::Document.new(my_gemtext_string).to_html
@@ -23,7 +25,7 @@ html_string = Gmi2html::Document.new(my_gemtext_string).to_html
 
 To convert a Gemtext file to an html string
 
-```
+```ruby
 require 'gmi2html'
 
 html_string = File.open('capsule/my_gemtext.gmi', 'r') do |f|
@@ -33,7 +35,7 @@ end
 
 ## Status
 
-First release but should be feature complete
+Second release but should be feature complete
 
 ### Supported
 
