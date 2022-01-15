@@ -16,7 +16,9 @@ Gem::Specification.new do |gem|
   gem.homepage    = 'https://github.com/jebw/gmi2html'
   gem.license       = 'MIT'
 
-  gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
+  gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR).reject do |f|
+                        f.match(%r{^(\.|spec)})
+                      end
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = %w[lib]
