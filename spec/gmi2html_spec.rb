@@ -6,6 +6,6 @@ RSpec.describe Gmi2html do
   describe 'VERSION' do
     subject { described_class::VERSION }
 
-    it { is_expected.to eql '0.1.0' }
+    it { is_expected.to eql '0.2.0' }
   end
 end

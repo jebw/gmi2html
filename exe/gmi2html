@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'gmi2html'
+require 'optparse'
+
+input = $stdin unless $stdin.tty?
+output = $stdout
+
+parser = OptionParser.new
+parser.on('-o', '--output=PATH', 'Output HTML path.  Standard output is used by default.') do |path|
+  output = File.open(path, 'w')
+end
+parser.on('-i', '--input=PATH', 'Input Gemtext path.  Standard input is used by default.') do |path|
+  input = File.open(path)
+end
+parser.parse!
+
+unless input
+  warn 'No input provided.  Please specify input path or use stdin.'
+  puts parser
+  exit 1
+end
+
+html = Gmi2html::Document.new(input).to_html
+input.close
+
+output.write(html)
+output.close

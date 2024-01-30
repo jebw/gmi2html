@@ -17,10 +17,10 @@ Gem::Specification.new do |gem|
   gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR).reject do |f|
-                        f.match(%r{^(\.|spec)})
-                      end
-  gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+    f.match(%r{^(\.|spec)})
+  end
+  gem.bindir        = 'exe'
+  gem.executables   = gem.files.grep(%r{^exe/}).map { |f| File.basename(f) }
   gem.require_paths = %w[lib]
   gem.required_ruby_version = '>= 2.5.0'
 
@@ -28,7 +28,7 @@ Gem::Specification.new do |gem|
     'homepage_uri' => 'https://github.com/jebw/gmi2html/',
     'changelog_uri' => 'https://github.com/jebw/gmi2html/blob/main/CHANGELOG.md',
     'source_code_uri' => 'https://github.com/jebw/gmi2html/',
-    'documentation_uri' => "https://github.com/jebw/gmi2html/blob/main/README.md",
+    'documentation_uri' => 'https://github.com/jebw/gmi2html/blob/main/README.md',
     'bug_tracker_uri' => 'https://github.com/jebw/gmi2html/issues',
     'rubygems_mfa_required' => 'true'
   }
