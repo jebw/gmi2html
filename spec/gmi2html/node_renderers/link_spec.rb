@@ -12,6 +12,9 @@ RSpec.describe Gmi2html::NodeRenderers::Link do
     let(:link) { Gemtext::Link.new '/my-capsule my capsule' }
 
     context 'when only link' do
+      let(:prev_node) { nil }
+      let(:next_node) { nil }
+
       it 'will render opening and closing p tags in addition to the a tag' do
         expect(rendered).to eql \
           %(<p>\n<a href="/my-capsule">my capsule</a>\n</p>\n)
