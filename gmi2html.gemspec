@@ -21,7 +21,6 @@ Gem::Specification.new do |gem|
   end
   gem.bindir        = 'exe'
   gem.executables   = gem.files.grep(%r{^exe/}).map { |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = %w[lib]
   gem.required_ruby_version = '>= 2.5.0'
 
@@ -29,7 +28,7 @@ Gem::Specification.new do |gem|
     'homepage_uri' => 'https://github.com/jebw/gmi2html/',
     'changelog_uri' => 'https://github.com/jebw/gmi2html/blob/main/CHANGELOG.md',
     'source_code_uri' => 'https://github.com/jebw/gmi2html/',
-    'documentation_uri' => "https://github.com/jebw/gmi2html/blob/main/README.md",
+    'documentation_uri' => 'https://github.com/jebw/gmi2html/blob/main/README.md',
     'bug_tracker_uri' => 'https://github.com/jebw/gmi2html/issues',
     'rubygems_mfa_required' => 'true'
   }

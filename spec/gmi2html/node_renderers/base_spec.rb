@@ -19,7 +19,7 @@ RSpec.describe Gmi2html::NodeRenderers::Base do
     let(:instance) { described_class.for_gemtext node }
 
     it 'will return a Gmi2html::NodeRenderers::Text' do
-      expect(instance).to be_kind_of Gmi2html::NodeRenderers::Text
+      expect(instance).to be_a Gmi2html::NodeRenderers::Text
     end
 
     it 'will assign the content' do
