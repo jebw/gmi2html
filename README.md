@@ -33,6 +33,9 @@ html_string = File.open('capsule/my_gemtext.gmi', 'r') do |f|
 end
 ```
 
+There is also a command line tool called `gmi2html`.
+Please refer to the help message (`gmi2html --help`) for its usage.
+
 ## Status
 
 Second release but should be feature complete
